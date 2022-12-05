@@ -1,0 +1,61 @@
+body {
+	padding-bottom: 4rem;
+}
+
+.grid {
+	display: grid;
+	gap: 1rem;
+}
+
+.link {
+	text-decoration: none;
+	color: white;
+}
+
+.link:hover {
+	color: white;
+	opacity: 0.8;
+}
+
+.members {
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+	justify-items: center;
+	max-width: 600px;
+	margin: auto;
+	width: 100%;
+}
+
+.container {
+	display: grid;
+	gap: 3rem;
+	max-width: 700px;
+	width: 95%;
+}
+
+.nav {
+	padding: 1rem;
+	background: black;
+	color: white;
+	margin-bottom: 3rem;
+}
+
+.heading {
+	font-size: 2rem;
+}
+
+.btn {
+	padding: 1rem;
+	background: black;
+	color: white;
+	transition: 0.2s;
+}
+
+.btn:hover {
+	color: white;
+	opacity: 0.9;
+}
+
+.label {
+	font-size: 1.5rem;
+}
