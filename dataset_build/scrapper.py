@@ -17,7 +17,7 @@ class Scrapper:
         return self.status
 
     def __makeSoup__(self):
-        self.soup = BeautifulSoup(self.response, 'html.parser')
+        self.soup = BeautifulSoup(self.response.text, 'html.parser')
 
     def __getpage__(self):
         self.response = requests.get(self.url)
@@ -28,9 +28,45 @@ class Scrapper:
         return 200
 
     def getArticle(self):
-        if self.status == 200:
-            results = self.soup.find('article')
+        if self.status != 200:
+            return None
+
+        results = self.soup.find('article')
+        if results:
             self.article = results.text
             return self.article
-        else:
+        
+        results = self.soup.find('div', class_='article')
+        if results:
+            self.article = results.text
+            return self.article
+
+        results = self.soup.find('div', class_='article-content')
+        if results:
+            self.article = results.text
+            return self.article
+        
+        results = self.soup.find('div', class_='story')
+        if results:
+            self.article = results.text
+            return self.article
+        
+        return None
+    
+    def canGetArticles(self):
+        if self.status != 200:
             return None
+
+        results = self.soup.find('article')
+        if results:
+            return True
+        
+        results = self.soup.find('div', class_='article')
+        if results:
+            return True
+
+        results = self.soup.find('div', class_='article-content')
+        if results:
+            return True
+        
+        return False
